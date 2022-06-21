@@ -5,26 +5,26 @@
   align-items: center;
   justify-content: space-between;
 }
-.time-control{
+.time-control {
   width: 50%;
   display: flex;
-  input{
+  input {
     width: 100%;
     padding: 1rem 2rem;
   }
-  p{
+  p {
     padding: 1rem;
     font-size: 1rem;
     font-weight: bold;
   }
 }
-.play-control{
+.play-control {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   width: 30%;
-  svg{
+  svg {
     cursor: pointer;
   }
 }
