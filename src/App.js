@@ -3,8 +3,8 @@ import { useState, useRef } from "react";
 //Import Styles
 import "./styles/app.scss";
 
-//Import Util
-import data from "./util";
+//Import Data
+import data from "./data";
 
 //Adding Components
 import Player from "./components/Player";
@@ -41,6 +41,9 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         currentSong={currentSong}
+        songs={songs}
+        setCurrentSong={setCurrentSong}
+        setSongs={setSongs}
       />
       <Library
         libraryStatus={libraryStatus}
