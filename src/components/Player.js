@@ -14,6 +14,8 @@ const Player = ({
   setIsPlaying,
   setSongInfo,
   songInfo,
+  songs,
+  setCurrentSong,
 }) => {
   //Event Handlers
   const playSongHandler = () => {
@@ -36,8 +38,22 @@ const Player = ({
     audioRef.current.currentTime = e.target.value;
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
-  //State
 
+  const skipTrackHandler = (direction) => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    if (direction === "skip-forward") {
+      setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    }
+    if (direction === "skip-back") {
+      if ((currentIndex - 1) % songs.length === -1) {
+        setCurrentSong(songs[songs.length - 1]);
+        return;
+      }
+      setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+    }
+  };
+
+  //State
   return (
     <div className="player">
       <div className="time-control">
@@ -52,7 +68,12 @@ const Player = ({
         <p>{getTime(songInfo.duration)}</p>
       </div>
       <div className="play-control">
-        <FontAwesomeIcon className="skipback" size="2x" icon={faAngleLeft} />
+        <FontAwesomeIcon
+          onClick={() => skipTrackHandler("skip-back")}
+          className="skip-back"
+          size="2x"
+          icon={faAngleLeft}
+        />
         <FontAwesomeIcon
           onClick={playSongHandler}
           className="play"
@@ -60,9 +81,10 @@ const Player = ({
           icon={isPlaying ? faPause : faPlay}
         />
         <FontAwesomeIcon
-          className="skipforward"
+          className="skip-forward"
           size="2x"
           icon={faAnglesRight}
+          onClick={() => skipTrackHandler("skip-forward")}
         />
       </div>
     </div>
