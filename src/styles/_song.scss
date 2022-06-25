@@ -7,11 +7,13 @@
   img {
     width: 25%;
     border-radius: 50%;
+
     &.rotated {
-      animation: rotation 8s alternate-reverse infinite linear;
+      animation: rotation 8s infinite linear;
     }
-    &.stopped{
-      transition: all 2s ease;
+
+    &.paused {
+      animation-play-state: paused;
     }
   }
   h2 {

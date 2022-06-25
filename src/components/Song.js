@@ -1,7 +1,7 @@
 const Song = ({ currentSong, isPlaying }) => {
   return (
     <div className="song-container">
-      <img className={isPlaying ? "rotated" : "stopped"} src={currentSong.cover}></img>
+      <img className={`rotated ${isPlaying ? "" : "paused"}`} src={currentSong.cover}></img>
       <h2>{currentSong.name}</h2>
       <h3>{currentSong.artist}</h3>
     </div>
